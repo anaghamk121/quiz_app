@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:quiz_app/views/quiz_page.dart';
+import 'login_screen.dart';
 
 
 
@@ -41,7 +41,7 @@ class _HomeState extends State<Home> {
                 onPressed: () {
                   Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => QuizScreen())
+                      MaterialPageRoute(builder: (context) => LoginScreen())
 
                   // QuestionScreen;
                   );},
