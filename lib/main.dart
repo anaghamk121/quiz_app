@@ -8,28 +8,27 @@ import 'package:quiz_app/services/data_login.dart';
 import 'package:quiz_app/views/splash.dart';
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   try {
-
     await Hive.initFlutter();
 
     Hive.registerAdapter(QuestionAdapter());
     Hive.registerAdapter(ChoicesAdapter());
-Hive.registerAdapter(StudentAdapter());
-Hive.registerAdapter(LoginModelAdapter());
+    Hive.registerAdapter(StudentAdapter());
+    Hive.registerAdapter(LoginModelAdapter());
 
     await populateInitialData();
-
     await Hive.openBox<Question>('questions');
     await Hive.openBox<Choices>('choices');
-await Hive.openBox<LoginModel>('LoginModel');
+    await Hive.openBox<LoginModel>('LoginModel');
     await Hive.openBox<Student>('students');
     runApp(const MyApp());
   } catch (e) {
     print("Error initializing Hive: $e");
   }
 }
+
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -37,7 +36,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:  Splash(),
+      home: Splash(),
     );
   }
 }

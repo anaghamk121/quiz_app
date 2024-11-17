@@ -7,12 +7,12 @@ class ViewStudentPerformance extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Student Performance")),
+      appBar: AppBar(title: const Text("Student Performance")),
       body: FutureBuilder(
         future: _fetchStudents(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (snapshot.hasError) {

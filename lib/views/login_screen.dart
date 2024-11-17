@@ -22,7 +22,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
       try {
         final loginResult = await verifyLogin(
-
           _loginIdController.text.trim(),
           _passwordController.text.trim(),
         );
@@ -34,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
               MaterialPageRoute(builder: (context) => AdminDashboard()),
             );
           } else {
-            // // Navigate to student quiz screen
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -165,11 +163,12 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             child: _isLoading
-                                ? const CircularProgressIndicator(color: Colors.white)
+                                ? const CircularProgressIndicator(
+                                    color: Colors.white)
                                 : const Text(
-                              'Login',
-                              style: TextStyle(fontSize: 16),
-                            ),
+                                    'Login',
+                                    style: TextStyle(fontSize: 16),
+                                  ),
                           ),
                         ),
                       ],
@@ -201,14 +200,11 @@ class LoginResult {
     required this.isSuccess,
     this.isAdmin = false,
     this.userId = -1,
-    //required id,
   });
 }
 
-
 Future<LoginResult> verifyLogin(String loginId, String password) async {
   try {
-
     final loginBox = await Hive.openBox('login');
     final adminCredentials = loginBox.get('admin');
 
@@ -221,8 +217,9 @@ Future<LoginResult> verifyLogin(String loginId, String password) async {
 
     final studentBox = await Hive.openBox<Student>('students');
     final student = studentBox.values.firstWhere(
-          (student) => student.id.toString() == loginId && student.loginPassword == password,
-   //   orElse: () => null,
+      (student) =>
+          student.id.toString() == loginId && student.loginPassword == password,
+      //   orElse: () => null,
     );
 
     if (student != null) {

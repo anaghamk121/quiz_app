@@ -1,7 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
-
 class DashboardScreen extends StatelessWidget {
   final int totalQuestions;
   final int answeredQuestions;
@@ -61,7 +60,6 @@ class DashboardScreen extends StatelessWidget {
             Text('Total Questions: $totalQuestions'),
             Text('Answered Questions: $answeredQuestions'),
             Text('Unanswered Questions: $unansweredQuestions'),
-            
             const SizedBox(height: 30),
             ElevatedButton(
               onPressed: () {

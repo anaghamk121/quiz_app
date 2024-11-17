@@ -12,6 +12,9 @@ Future<void> populateInitialData() async {
     print("Admin credentials saved: ${loginBox.get('admin')}");
   }
 
+
+
+
   final studentBox = await Hive.openBox<Student>('students');
   if (studentBox.isEmpty) {
     await studentBox.add(Student(

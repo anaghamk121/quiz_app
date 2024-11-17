@@ -49,7 +49,8 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void _nextQuestion() {
     if (_pageController.page! < questions.length - 1) {
-      _pageController.nextPage(duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
+      _pageController.nextPage(
+          duration: const Duration(milliseconds: 300), curve: Curves.easeIn);
       _timeRemaining = 30;
     } else {
       _timer.cancel();
@@ -58,7 +59,9 @@ class _QuizScreenState extends State<QuizScreen> {
   }
 
   List<Choices> getQuestionChoices(int questionId) {
-    return choices.where((choice) => choice.questionId == questionId.toString()).toList();
+    return choices
+        .where((choice) => choice.questionId == questionId.toString())
+        .toList();
   }
 
   void handleSubmit() {
@@ -117,13 +120,12 @@ class _QuizScreenState extends State<QuizScreen> {
       ),
       body: Column(
         children: [
-
           Container(
             padding: const EdgeInsets.all(16.0),
             color: Colors.blueGrey,
             child: Text(
               'Time Remaining: $_timeRemaining s',
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
           ),
           Expanded(
@@ -132,7 +134,8 @@ class _QuizScreenState extends State<QuizScreen> {
               physics: const NeverScrollableScrollPhysics(),
               itemCount: questions.length,
               itemBuilder: (context, questionIndex) {
-                final currentChoices = getQuestionChoices(questions[questionIndex].id);
+                final currentChoices =
+                    getQuestionChoices(questions[questionIndex].id);
 
                 return Column(
                   children: [
@@ -148,7 +151,8 @@ class _QuizScreenState extends State<QuizScreen> {
                         itemCount: currentChoices.length,
                         itemBuilder: (context, optionIndex) {
                           final choice = currentChoices[optionIndex];
-                          bool isSelected = selectedAnswers[questionIndex] == choice.id;
+                          bool isSelected =
+                              selectedAnswers[questionIndex] == choice.id;
 
                           return GestureDetector(
                             onTap: () {
@@ -158,10 +162,12 @@ class _QuizScreenState extends State<QuizScreen> {
                               _nextQuestion();
                             },
                             child: Container(
-                              margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                              margin: const EdgeInsets.symmetric(
+                                  horizontal: 16, vertical: 8),
                               padding: const EdgeInsets.all(16),
                               decoration: BoxDecoration(
-                                color: isSelected ? Colors.blue : Colors.blueGrey,
+                                color:
+                                    isSelected ? Colors.blue : Colors.blueGrey,
                                 borderRadius: BorderRadius.circular(8),
                               ),
                               child: Text(
@@ -191,15 +197,9 @@ class _QuizScreenState extends State<QuizScreen> {
         backgroundColor: Colors.blueGrey,
         items: const [
           Icon(Icons.question_answer_outlined),
-         // Icon(Icons.dashboard),
+          // Icon(Icons.dashboard),
         ],
-        onTap: (index) {
-         // QuizScreen(id: 1,
-          // DashboardScreen( totalQuestions: questions.length,
-          //   answeredQuestions: questions.length,
-          //   unansweredQuestions: questions.length,
-         // );
-        },
+        onTap: (index) {},
       ),
     );
   }

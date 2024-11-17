@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
-
-
 class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
@@ -42,8 +40,6 @@ class _HomeState extends State<Home> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => LoginScreen())
-
-                  // QuestionScreen;
                   );},
                 label: const Text("Start Quiz", style: TextStyle(color: Colors.black)),
               ),
